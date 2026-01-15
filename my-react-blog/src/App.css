@@ -1,42 +1,25 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* src/App.css */
+
+/* 给整个应用加点背景色，稍微灰一点，这样白色的卡片才显眼 */
+.app {
+  max-width: 800px; /* 限制最大宽度，不让内容太散 */
+  margin: 0 auto;   /* 居中显示 */
+  padding: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* 重点：卡片的样式 */
+.post-card {
+  background-color: #ffffff;      /* 卡片背景是白色的 */
+  border: 1px solid #e0e0e0;      /* 加一条浅灰色的细边框 */
+  border-radius: 12px;            /* 让角变得圆润，不要尖尖的 */
+  padding: 24px;                  /* 内容离边框要有距离（内边距） */
+  margin-bottom: 20px;            /* 卡片之间要有距离（外边距） */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* 加一点淡淡的阴影，制造立体感 */
+  transition: transform 0.2s;     /* 为下一步的动画做准备 */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* 额外奖励：鼠标悬停效果 */
+.post-card:hover {
+  transform: translateY(-5px);    /* 鼠标放上去时，卡片微微上浮 */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 阴影加深 */
 }
