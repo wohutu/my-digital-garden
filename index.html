@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <style>
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+        nav {
+            display: flex;              /* 开启弹性布局模式 */
+            justify-content: space-between; /* 魔法代码：让左右两端对齐（中间留空） */
+            align-items: center;        /* 让文字在垂直方向居中 */
+            padding: 10px 40px;         /* 给导航栏四周加点内边距 */
+            background-color: white;    /* 背景白色 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 底部加一点阴影 */
+            margin-bottom: 40px;        /* 让导航栏和下面的内容保持距离 */
+        }
+
+        /* 去掉链接下划线，改个颜色 */
+        a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 20px;          /* 让链接之间有点间距 */
+            font-weight: bold;
+        }
+        /* 注意：在 CSS 里，用点 (.) 来表示我们要找的是一个 class */
+        .card {
+            background-color: white; /* 盒子是白色的 */
+            width: 600px;            /* 限制盒子宽度，不让它太宽 */
+            margin: 0 auto;          /* 魔法代码：让盒子在画面水平居中 */
+            padding: 20px;           /* 内边距：给文字和盒子边缘留出呼吸空间 */
+            border-radius: 10px;     /* 让盒子的角变圆润 */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* 加一点淡淡的阴影，制造立体感 */
+        }
+        /* 1. 先把默认的无序列表样式去掉 */
+        ul {
+            padding: 0;          /* 去掉列表默认的左边缩进 */
+            list-style: none;    /* 去掉前面那个黑圆点 */
+        }
+
+        /* 2. 把列表项变成“小胶囊” */
+        li {
+            display: inline-block; /* 魔法代码：让它们不再独占一行，而是横着排 */
+            background-color: #e0e0e0; /* 给个浅灰色背景 */
+            padding: 5px 10px;     /* 上下5像素，左右10像素（又是 Padding！） */
+            margin-right: 5px;     /* 每个标签右边留点缝隙，别挨太紧 */
+            border-radius: 15px;   /* 让两头变成半圆形 */
+            font-size: 0.9em;      /* 字体稍微小一点点 */
+        }
+        li:hover {
+            background-color: #007bff; /* 悬停时变成亮蓝色 */
+            color: white;              /* 文字变白，保证对比度 */
+            cursor: pointer;           /* 鼠标指针变成小手形状 */
+            transition: 0.3s;          /* 魔法代码：让颜色变化有个平滑的过渡动画 */
+        }
+        /* 1. 给按钮“整容” */
+        #theme-btn {
+            background: none;    /* 去掉背景色 */
+            border: none;        /* 去掉边框 */
+            font-size: 1.5rem;   /* 让月亮变大一点 */
+            cursor: pointer;     /* 鼠标放上去变小手 */
+        }
+
+        /* 2. 定义深色模式下的样式 */
+        /* 当 body 拥有 "dark-mode" 这个名字时，它和里面的卡片会变色 */
+        body.dark-mode {
+            background-color: #2c2c2c; /* 背景变深灰 */
+            color: #f4f4f9;            /* 文字变亮白 */
+        }
+        
+        body.dark-mode .card {
+            background-color: #3b3b3b; /* 卡片变成稍浅一点的灰色 */
+            color: #f4f4f9;            /* 卡片里的文字也变白 */
+        }
+        
+        body.dark-mode nav {
+             background-color: #333;   /* 导航栏也变黑 */
+             color: white;
+        }
+        
+        body.dark-mode nav a {
+            color: white;              /* 导航链接变白 */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="我的数字花园">
+    <meta name="author" content="zl">
+    <title>我的数字花园</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+    <nav>
+        <div class="logo">🌿 My Garden</div>
+        <div class="menu">
+            <a href="#">首页</a>
+            <a href="#">文章</a>
+            <a href="#">关于</a>
+            <button id="theme-btn">🌙</button>
+        </div>
+    </nav>
+    <h1>欢迎来到我的数字花园</h1>
+    <div class="card">
+        <p>预计阅读时间：<span id="reading-time">0</span> 分钟</p>
+        <p>你好！我是前端练习生。这里将记录我从零开始搭建网站的全过程。</p>
+
+        <h2>我的兴趣</h2>
+        <ul>
+            <li>写代码</li>
+            <li>看科幻小说</li>
+            <li>喝咖啡</li>
+        </ul>
+    </div>
+    <script>
+        // 我们要把 JS 代码写在这里
+        // 1. 找到文章所在的盒子
+        const post = document.querySelector(".card");
+        const text = post.innerText;
+        const count = text.length;
+        const time = Math.ceil(count / 300); // 假设每分钟阅读300字
+        document.getElementById("reading-time").innerText = time;
+        const button = document.getElementById("theme-btn");
+        button.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+        });
+
+    </script>
+</body>
+</html>
